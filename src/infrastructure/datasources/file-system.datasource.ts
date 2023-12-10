@@ -1,5 +1,5 @@
 import {LogDatasource} from '../../domain/datasources/log.datasource'
-import {LogEntity, LogSeverityLevel} from '../../domain/use-cases/entities/log.entity'
+import {LogEntity, LogSeverityLevel} from '../../domain/entities/log.entity'
 import * as fs from 'fs'
 
 export class FileSystemDatasource implements LogDatasource {
