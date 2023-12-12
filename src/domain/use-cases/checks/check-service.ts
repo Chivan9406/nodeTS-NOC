@@ -6,7 +6,6 @@ interface CheckServiceUseCase {
 }
 
 type SuccessCallback = (() => void) | undefined
-
 type ErrorCallback = ((error: string) => void) | undefined
 
 export class CheckService implements CheckServiceUseCase {
@@ -14,7 +13,8 @@ export class CheckService implements CheckServiceUseCase {
         private readonly logRepository: LogRepository,
         private readonly successCallback: SuccessCallback,
         private readonly errorCallback: ErrorCallback
-    ) {}
+    ) {
+    }
 
     public async execute(url: string): Promise<boolean> {
         try {
@@ -46,7 +46,5 @@ export class CheckService implements CheckServiceUseCase {
             this.errorCallback && this.errorCallback(`${errorMessage}`)
             return false
         }
-
-        return true
     }
 }
