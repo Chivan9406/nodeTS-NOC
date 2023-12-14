@@ -1,15 +1,16 @@
-import {CronService} from './cron/cron.service'
-import {CheckService} from '../domain/use-cases/checks/check-service'
 import {LogRepositoryImpl} from '../infrastructure/repositories/log.repository.impl'
 import {FileSystemDatasource} from '../infrastructure/datasources/file-system.datasource'
 import {EmailService} from './email/email.service'
-import {SendEmailLogs} from '../domain/use-cases/email/send-email-logs'
+import {LogSeverityLevel} from '../domain/entities/log.entity'
 
-const fileSystemLogRepository = new LogRepositoryImpl(new FileSystemDatasource())
+const logRepository = new LogRepositoryImpl(
+    new FileSystemDatasource()
+    // new MongoLogDatasource()
+)
 const emailService = new EmailService()
 
 export class Server {
-    public static start() {
+    public static async start() {
         console.log('Server started...')
 
         // const emailService = new EmailService()
@@ -30,13 +31,16 @@ export class Server {
 
         // new SendEmailLogs(emailService, fileSystemLogRepository).execute('ivan9406@hotmail.com')
 
+        // const logs = await logRepository.getLogs(LogSeverityLevel.low)
+        // console.log(logs)
+
         // CronService.createJob(
         //     '*/5 * * * * *',
         //     () => {
         //         const url = 'https://google.com'
         //
         //         new CheckService(
-        //             fileSystemLogRepository,
+        //             logRepository,
         //             () => console.log(`${url} is ok`),
         //             (error) => console.error(error)
         //         ).execute(url)

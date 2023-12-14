@@ -23,5 +23,5 @@ async function main() {
     // const logs = await LogModel.find()
     // console.log(logs[0].message)
 
-    // Server.start()
+    Server.start()
 }
