@@ -5,3 +5,5 @@ dist/
 .env
 /mongo/
 /postgres/
+prisma/migrations/migration_lock.toml
+prisma/migrations/**/*.sql
