@@ -3,7 +3,11 @@ node_modules/
 dist/
 /logs/
 .env
+.env.test
 /mongo/
 /postgres/
 prisma/migrations/migration_lock.toml
 prisma/migrations/**/*.sql
+/mongo-test/
+/postgres-test/
+/coverage/
