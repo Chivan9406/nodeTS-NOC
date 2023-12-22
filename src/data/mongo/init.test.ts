@@ -1,12 +1,12 @@
 import {MongoDatabase} from "./init"
-import * as mongoose from 'mongoose'
+import mongoose from 'mongoose'
 
 describe('init MongoDB', () => {
     afterAll(() => {
-        mongoose.disconnect()
+        mongoose.connection.close()
     })
 
-    test('shoyld connect to MongoDB', async () => {
+    test('should connect to MongoDB', async () => {
         const connected = await MongoDatabase.connect({
             dbName: process.env.MONGO_DB_NAME!,
             mongoUrl: process.env.MONGO_URL!,
@@ -19,13 +19,13 @@ describe('init MongoDB', () => {
         try {
             const connected = await MongoDatabase.connect({
                 dbName: process.env.MONGO_DB_NAME!,
-                mongoUrl: 'mongodb://ivan:123456789@localhosts:27017',
+                mongoUrl: 'mongodb://ivan:123456789@localhosasdsast:27017'
             })
 
             expect(true).toBe(false)
 
         } catch (e) {
-
+            expect(true).toBe(true)
         }
     })
 })
