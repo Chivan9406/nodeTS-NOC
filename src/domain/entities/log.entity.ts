@@ -31,7 +31,7 @@ export class LogEntity {
         return new LogEntity({
             message,
             level,
-            createdAt,
+            createdAt: new Date(createdAt),
             origin
         })
     }
